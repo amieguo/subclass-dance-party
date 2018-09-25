@@ -1,6 +1,7 @@
 var GrowingDancer = function(top, left, timeBetweenSteps) {
   // debugger;
   this.oldStep = Dancer.prototype.step;
+  this.pos = false;
   Dancer.call(this, top, left, timeBetweenSteps);
   
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
@@ -12,8 +13,15 @@ GrowingDancer.prototype = Object.create(Dancer.prototype);
 GrowingDancer.prototype.constructor = GrowingDancer;
 GrowingDancer.prototype.step = function() {
   // call the old version of step at the beginning of any call to this new version of step
+  if (this.pos) {
+    this.setPosition(100, 100);
+    this.pos = false;
+  } else {
+    this.setPosition(500, 500);
+    this.pos = true;
+  }
   this.oldStep();
-  this.setPosition(300, 300);
+  // this.setPosition(($('body').height() * Math.random()) - $('.dancer').height(), ($('body').width() * Math.random()) - $('.dancer').width());
   // toggle() is a jQuery method to show/hide the <span> tag.
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
@@ -37,8 +45,9 @@ GrowingDancer.prototype.grow = function() {
   var styleSettings = {
     width: randomWidth,
     height: randomHeight,
-    background: '#676470',
-    transition: 'all 5s ease',
+    'background-image': 'url("img/doge-crop.jpg")',
+    'background-size': 'cover',
+    transition: 'all 0.8s ease',
     transform: 'scale(' + scale + ')'
   };
   this.$node.css(styleSettings);
