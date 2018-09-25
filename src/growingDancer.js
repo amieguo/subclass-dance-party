@@ -13,15 +13,8 @@ GrowingDancer.prototype = Object.create(Dancer.prototype);
 GrowingDancer.prototype.constructor = GrowingDancer;
 GrowingDancer.prototype.step = function() {
   // call the old version of step at the beginning of any call to this new version of step
-  if (this.pos) {
-    this.setPosition(100, 100);
-    this.pos = false;
-  } else {
-    this.setPosition(500, 500);
-    this.pos = true;
-  }
   this.oldStep();
-  // this.setPosition(($('body').height() * Math.random()) - $('.dancer').height(), ($('body').width() * Math.random()) - $('.dancer').width());
+  this.setPosition(($('body').height() * Math.random()) - $('.dancer').height(), ($('body').width() * Math.random()) - $('.dancer').width());
   // toggle() is a jQuery method to show/hide the <span> tag.
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.

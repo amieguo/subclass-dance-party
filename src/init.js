@@ -40,8 +40,17 @@ $(document).ready(function() {
     $('body').append(dancer.$node);
   });
   $('.lineUpButton').on('click', function (event) {
+    var posX = 0;
+    var dancersWidth = ($('body').width() / window.dancers.length);
     for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].setPosition(50, posX);
+      posX += dancersWidth;
       window.dancers[i].lineUp();
+    }
+  });
+  $('.danceButton').on('click', function (event) {
+    for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].dance();
     }
   });
 });

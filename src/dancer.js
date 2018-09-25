@@ -37,9 +37,21 @@ Dancer.prototype.setPosition = function(top, left) {
   this.$node.css(styleSettings);
 };
 
-Dancer.prototype.lineUp = function(posX) {
+Dancer.prototype.lineUp = function() {
+  var height = 200;
+  var width = 200;
+  var styleSettings = {
+    width: width,
+    height: height,
+    transform: 'scale(1)'
+  };
+  this.$node.toggle(true);
   clearTimeout(this.timeout);
-  this.setPosition(50, posX);
-  posX += 50;
+  this.$node.css(styleSettings);
   this.linedUp = true;
+};
+
+Dancer.prototype.dance = function() {
+  this.linedUp = false;
+  this.step();
 };
