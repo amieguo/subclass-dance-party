@@ -7,10 +7,9 @@ var Dancer = function(top, left, timeBetweenSteps) {
   this.timeout;
 
   // use jQuery to create an HTML <span> tag
-  this.$node = $('<span class="dancer"></span>');
-
+  this.$node = $('<span class="dancer mouseHover"></span>');
   this.step();
-
+  
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
   // this one sets the position to some random default point within the body
   this.setPosition(top, left);
@@ -38,11 +37,8 @@ Dancer.prototype.setPosition = function(top, left) {
 };
 
 Dancer.prototype.lineUp = function() {
-  var height = 200;
-  var width = 200;
   var styleSettings = {
-    width: width,
-    height: height,
+    
     transform: 'scale(1)'
   };
   this.$node.toggle(true);
@@ -54,4 +50,12 @@ Dancer.prototype.lineUp = function() {
 Dancer.prototype.dance = function() {
   this.linedUp = false;
   this.step();
+};
+
+Dancer.prototype.hoverEvent = function() {
+  this.$node.hover(function () {
+    $(this).addClass('flipped');
+  }, function () {
+    $(this).removeClass('flipped');
+  });
 };

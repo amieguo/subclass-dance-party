@@ -4,13 +4,56 @@ body, html {
 }
 body {
   margin: 0px;
-  background-color: #444;
   font-size: 18px;
+  overflow: hidden;
+  animation: colorchange 2s; /* animation-name followed by duration in seconds*/
+  /* you could also use milliseconds (ms) or something like 2.5s */
+  -webkit-animation: colorchange 2s; /* Chrome and Safari */
+  animation-iteration-count: infinite;
+  
+  @keyframes colorchange
+  {
+    0%   {background: red;}
+    25%  {background: yellow;}
+    50%  {background: blue;}
+    75%  {background: green;}
+    100% {background: red;}
+  }
+  
+  @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+  {
+    0%   {background: red;}
+    25%  {background: yellow;}
+    50%  {background: blue;}
+    75%  {background: green;}
+    100% {background: red;}
+  }
+  .background-container {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    .background-img {
+      width: 300px;
+      height: 596px;
+    }
+  }
+}
+.spin {
+	-webkit-animation: rotation 2s infinite linear;
+
+  @-webkit-keyframes rotation {
+		from {
+				-webkit-transform: rotate(0deg);
+		}
+		to {
+				-webkit-transform: rotate(359deg);
+		}
+  }
 }
 body, a:link, a:visited, a:active {
   color: lightblue;
 }
-.title, .addDancerButton, .lineUpButton, .danceButton {
+.title, .addDancerButton, .lineUpButton, .danceButton , .jamsButton{
   padding:5px 12px;
   float:right;
 }
@@ -25,8 +68,59 @@ body, a:link, a:visited, a:active {
   border-radius: 10px;
   position: absolute;
 }
+.dancerdiv {
+  height: 200px; 
+  width: 200px;
+}
 .dancer-blinky {
   border-radius: 10px;
-  background-image: url('img/cute-dog.jpg');
+  background-image: url('img/spongebob.gif');
   position: absolute;
+}
+.flipped {
+  -webkit-animation: flip 2s 1;
+  @-webkit-keyframes flip {
+    from {
+      -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+        rotate3d(0, 1, 0, -360deg);
+      transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -360deg);
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+    }
+
+    40% {
+      -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+        rotate3d(0, 1, 0, -190deg);
+      transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+        rotate3d(0, 1, 0, -190deg);
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+    }
+
+    50% {
+      -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+        rotate3d(0, 1, 0, -170deg);
+      transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+        rotate3d(0, 1, 0, -170deg);
+      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+    }
+
+    80% {
+      -webkit-transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
+        rotate3d(0, 1, 0, 0deg);
+      transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
+        rotate3d(0, 1, 0, 0deg);
+      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+    }
+
+    to {
+      -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+        rotate3d(0, 1, 0, 0deg);
+      transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
+      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+    }
+  }
 }

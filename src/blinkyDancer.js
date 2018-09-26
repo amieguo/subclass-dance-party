@@ -2,7 +2,7 @@ var BlinkyDancer = function(top, left, timeBetweenSteps) {
   // debugger;
   this.oldStep = Dancer.prototype.step;
   Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<span class="dancer dancer-blinky"></span>');
+  this.$node.addClass('dancer-blinky');
   
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function

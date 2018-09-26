@@ -22,10 +22,11 @@ $(document).ready(function() {
 
     // make a dancer with a random position
     var dancer = new dancerMakerFunction(
-      $('body').height() * Math.random(),
-      $('body').width() * Math.random(),
-      Math.random() * 1000
+      ($('body').height() - $(this).height()) * Math.random(),
+      ($('body').width() - $(this).height()) * Math.random(),
+      1000
     );
+            
     // var blinkyDancer = new BlinkyDancer(
     //   $('body').height() * Math.random(),
     //   $('body').width() * Math.random(),
@@ -41,7 +42,7 @@ $(document).ready(function() {
   });
   $('.lineUpButton').on('click', function (event) {
     var posX = 0;
-    var dancersWidth = ($('body').width() / window.dancers.length);
+    var dancersWidth = (($('body').width() - 200) / window.dancers.length);
     for (var i = 0; i < window.dancers.length; i++) {
       window.dancers[i].setPosition(50, posX);
       posX += dancersWidth;
@@ -52,6 +53,9 @@ $(document).ready(function() {
     for (var i = 0; i < window.dancers.length; i++) {
       window.dancers[i].dance();
     }
+  });
+  $('.interactButton').on('click', function (event) {
+    
   });
 });
 
