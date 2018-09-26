@@ -40,15 +40,9 @@ GrowingDancer.prototype.grow = function() {
   } else {
     scale = 1;
   }
-  // if (randomHeight < 100) {
-  //   // randomHeight = 1000 * Math.random();
-  // } else if (randomHeight > 500) {
-  //   // randomHeight = 100 * Math.random();
-  // }
   var styleSettings = {
     width: randomWidth,
     height: randomHeight,
-    // 'background': 'no-repeat url("img/carlton.gif")',
     transition: 'all 0.8s ease',
     transform: 'scale(' + scale + ')'
   };

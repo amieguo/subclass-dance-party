@@ -7,7 +7,7 @@ var BlinkyDancer = function(top, left, timeBetweenSteps) {
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
   // console.log(this.step);
-  this.$img.attr('src', "img/cute-dog.jpg");
+  this.$img.attr('src', 'img/cute-dog.jpg');
 };
 BlinkyDancer.prototype = Object.create(Dancer.prototype);
 BlinkyDancer.prototype.constructor = BlinkyDancer;
@@ -23,8 +23,6 @@ BlinkyDancer.prototype.step = function() {
   var styleSettings = {
     width: width,
     height: height,
-    // 'background-image': 'url("img/cute-dog.jpg")',
-    // 'background-size': 'cover',
   };
   this.$img.toggle();
   this.$img.css(styleSettings);
