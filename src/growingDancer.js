@@ -7,7 +7,7 @@ var GrowingDancer = function(top, left, timeBetweenSteps) {
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
   // console.log(this.step);
-
+  this.$img.attr('src', 'img/spongebob.gif');
 };
 GrowingDancer.prototype = Object.create(Dancer.prototype);
 GrowingDancer.prototype.constructor = GrowingDancer;
@@ -48,9 +48,9 @@ GrowingDancer.prototype.grow = function() {
   var styleSettings = {
     width: randomWidth,
     height: randomHeight,
-    'background': 'no-repeat url("img/carlton.gif")',
+    // 'background': 'no-repeat url("img/carlton.gif")',
     transition: 'all 0.8s ease',
     transform: 'scale(' + scale + ')'
   };
-  this.$node.css(styleSettings);
+  this.$img.css(styleSettings);
 };

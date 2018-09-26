@@ -2,12 +2,12 @@ var BlinkyDancer = function(top, left, timeBetweenSteps) {
   // debugger;
   this.oldStep = Dancer.prototype.step;
   Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node.addClass('dancer-blinky');
+  this.$img.addClass('dancer-blinky');
   
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
   // console.log(this.step);
-
+  this.$img.attr('src', "img/cute-dog.jpg");
 };
 BlinkyDancer.prototype = Object.create(Dancer.prototype);
 BlinkyDancer.prototype.constructor = BlinkyDancer;
@@ -18,14 +18,14 @@ BlinkyDancer.prototype.step = function() {
   // toggle() is a jQuery method to show/hide the <span> tag.
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
-  var height = 300;
-  var width = 300;
+  var height = 309;
+  var width = 198;
   var styleSettings = {
     width: width,
     height: height,
-    'background-image': 'url("img/cute-dog.jpg")',
-    'background-size': 'cover',
+    // 'background-image': 'url("img/cute-dog.jpg")',
+    // 'background-size': 'cover',
   };
-  this.$node.toggle();
-  this.$node.css(styleSettings);
+  this.$img.toggle();
+  this.$img.css(styleSettings);
 };

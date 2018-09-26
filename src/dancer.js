@@ -7,7 +7,8 @@ var Dancer = function(top, left, timeBetweenSteps) {
   this.timeout;
 
   // use jQuery to create an HTML <span> tag
-  this.$node = $('<span class="dancer mouseHover"></span>');
+  this.$node = $('<span class="mouseHover"></span>');
+  this.$img = $('<img class="dancer">');
   this.step();
   
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
@@ -33,17 +34,16 @@ Dancer.prototype.setPosition = function(top, left) {
     top: top,
     left: left
   };
-  this.$node.css(styleSettings);
+  this.$img.css(styleSettings);
 };
 
 Dancer.prototype.lineUp = function() {
   var styleSettings = {
-    
     transform: 'scale(1)'
   };
-  this.$node.toggle(true);
+  this.$img.toggle(true);
   clearTimeout(this.timeout);
-  this.$node.css(styleSettings);
+  this.$img.css(styleSettings);
   this.linedUp = true;
 };
 
@@ -53,7 +53,7 @@ Dancer.prototype.dance = function() {
 };
 
 Dancer.prototype.hoverEvent = function() {
-  this.$node.hover(function () {
+  this.$img.hover(function () {
     $(this).addClass('flipped');
   }, function () {
     $(this).removeClass('flipped');

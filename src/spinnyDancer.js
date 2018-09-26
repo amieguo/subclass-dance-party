@@ -7,7 +7,7 @@ var SpinnyDancer = function (top, left, timeBetweenSteps) {
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
   // console.log(this.step);
-
+  this.$img.attr('src', "img/carlton.gif");
 };
 SpinnyDancer.prototype = Object.create(Dancer.prototype);
 SpinnyDancer.prototype.constructor = SpinnyDancer;
@@ -28,12 +28,12 @@ SpinnyDancer.prototype.step = function () {
   var styleSettings = {
     width: '141px',
     height: '200px',
-    'background-image': 'url("img/carlton.gif")',
-    'background-size': 'cover',
+    // 'background-image': 'url("img/carlton.gif")',
+    // 'background-size': 'cover',
     transition: 'all 0.8s ease',
     // transform: 'scale(' + scale + ')'
   };
-  this.$node.css(styleSettings);
-  this.$node.addClass('spin');
+  this.$img.css(styleSettings);
+  this.$img.addClass('spin');
 
 };
